@@ -17,7 +17,7 @@ namespace Greeting.Test
         {
             var expected = "Hello, Andrea.";
             var actual = _sut.Greet("Andrea");
-         
+
             Assert.AreEqual(expected, actual);
         }
 
@@ -55,6 +55,32 @@ namespace Greeting.Test
             var actual = _sut.Greet("Andrea", "Franco", "Giuseppe");
 
             Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void Should_Handle_Multiple_Name_With_Upper()
+        {
+            var expected = "Hello, Andrea and Franco. AND HELLO GIUSEPPE!";
+            var actual = _sut.Greet("Andrea", "Franco", "GIUSEPPE");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void Should_Handle_Names_With_Double_Quote()
+        {
+            var expected = "Hello, Andrea, Franco and Alfredo.";
+            var actual = _sut.Greet("Andrea", "\"Franco, Alfredo\"");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SandBox()
+        {
+            var actual = _sut.Greet("Andrea", "Franco", "GIUSEPPE", "Paperino", "\"h, Z\"");
+
+            Assert.Pass(actual);
         }
     }
 }

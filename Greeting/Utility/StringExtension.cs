@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace Greeting
+namespace Greeting.Utility
 {
     public static class StringExtension
     {

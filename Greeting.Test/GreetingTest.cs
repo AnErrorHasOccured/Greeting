@@ -1,15 +1,19 @@
+using Greeting.Chain;
+using Greeting.Ioc;
 using NUnit.Framework;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Greeting.Test
 {
     public class Tests
     {
-        private Greeting _sut;
+        private IGreeting _sut;
 
         [SetUp]
         public void Setup()
         {
-            _sut = new Greeting();
+            var container = Container.CreateHostBuilder().Build();
+            _sut = new Greeting(container.Services.GetService<IGreetingHandler>());
         }
 
         [Test]
@@ -76,6 +80,7 @@ namespace Greeting.Test
         }
 
         [Test]
+        [Ignore("SandBox test")]
         public void SandBox()
         {
             var actual = _sut.Greet("Andrea", "Franco", "GIUSEPPE", "Paperino", "\"h, Z\"");

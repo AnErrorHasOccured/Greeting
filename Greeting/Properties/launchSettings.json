@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Greeting": {
+      "commandName": "Project",
+      "commandLineArgs": "alfredo pippo"
+    }
+  }
+}

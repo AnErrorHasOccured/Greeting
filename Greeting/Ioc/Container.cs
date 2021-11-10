@@ -6,7 +6,10 @@ namespace Greeting.Ioc
 {
     public static class Container
     {
-        public static IHostBuilder CreateHostBuilder() =>
+        public static T GetService<T>() 
+            => CreateHostBuilder().Services.GetService<T>();
+
+        private static IHost CreateHostBuilder() =>
             Host
                 .CreateDefaultBuilder()
                 .ConfigureServices((_, services) =>
@@ -28,6 +31,6 @@ namespace Greeting.Ioc
                                 .SetNext(manyNamesHandler);
 
                             return nullHandler;
-                        }));
+                        })).Build();
     }
 }

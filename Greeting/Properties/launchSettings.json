@@ -2,7 +2,7 @@
   "profiles": {
     "Greeting": {
       "commandName": "Project",
-      "commandLineArgs": "alfredo pippo"
+      "commandLineArgs": "alfredo pippo ANDREA"
     }
   }
 }

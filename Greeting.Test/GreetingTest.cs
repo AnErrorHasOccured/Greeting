@@ -1,7 +1,6 @@
 using Greeting.Chain;
 using Greeting.Ioc;
 using NUnit.Framework;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Greeting.Test
 {
@@ -12,8 +11,8 @@ namespace Greeting.Test
         [SetUp]
         public void Setup()
         {
-            var container = Container.CreateHostBuilder().Build();
-            _sut = new Greeting(container.Services.GetService<IGreetingHandler>());
+            var greetingHandler = Container.GetService<IGreetingHandler>();
+            _sut = new Greeting(greetingHandler);
         }
 
         [Test]

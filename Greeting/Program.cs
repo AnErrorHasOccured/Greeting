@@ -1,6 +1,5 @@
 ﻿using System;
 using Greeting.Ioc;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Greeting
 {
@@ -8,8 +7,7 @@ namespace Greeting
     {
         static void Main(string[] names)
         {
-            var container = Container.CreateHostBuilder().Build();
-            var greeting = container.Services.GetService<Greeting>();
+            var greeting = Container.GetService<IGreeting>();
 
             Console.WriteLine(greeting?.Greet(names));
         }

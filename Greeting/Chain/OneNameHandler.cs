@@ -3,7 +3,7 @@ using Greeting.Utility;
 
 namespace Greeting.Chain
 {
-    public class OneNameGreetingHandler : AbstractGreetingHandler
+    public class OneNameHandler : AbstractGreetingHandler
     {
         public override string Handle(params string[] names)
         {

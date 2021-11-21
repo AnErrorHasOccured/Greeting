@@ -17,13 +17,12 @@ namespace Greeting.Ioc
                         .AddSingleton<IGreeting, Greeting>()
                         .AddSingleton<IGreetingHandler>(_ =>
                         {
-                            var nullHandler = new NullGreetingHandler();
-                            var oneNameHandler = new OneNameGreetingHandler();
-                            var twoNamesHandler = new TwoNamesGreetingHandler();
-                            var manyNamesWithSomeUpperHandler = new ManyNamesWithSomeUpperGreetingHandler();
-                            var manyNamesHandler = new ManyNamesGreetingHandler();
-
-
+                            var nullHandler = new NullHandler();
+                            var oneNameHandler = new OneNameHandler();
+                            var twoNamesHandler = new TwoNamesHandler();
+                            var manyNamesWithSomeUpperHandler = new ManyNamesWithSomeUpperHandler();
+                            var manyNamesHandler = new ManyNamesHandler();
+                            
                             nullHandler
                                 .SetNext(oneNameHandler)
                                 .SetNext(twoNamesHandler)

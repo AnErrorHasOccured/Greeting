@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Greeting.Test
 {
-    public class Tests
+    public class GreetingTests
     {
         private IGreeting _sut;
 

@@ -3,7 +3,7 @@ using Greeting.Utility;
 
 namespace Greeting.Chain
 {
-    public class ManyNamesWithSomeUpperGreetingHandler : AbstractGreetingHandler
+    public class ManyNamesWithSomeUpperHandler : AbstractGreetingHandler
     {
         public override string Handle(params string[] names)
         {

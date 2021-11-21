@@ -1,6 +1,6 @@
 ﻿namespace Greeting.Chain
 {
-    public class TwoNamesGreetingHandler : AbstractGreetingHandler
+    public class TwoNamesHandler : AbstractGreetingHandler
     {
         public override string Handle(params string[] names)
         {

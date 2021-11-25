@@ -68,16 +68,7 @@ namespace Greeting.Test
 
             Assert.AreEqual(expected, actual);
         }
-
-        [Test]
-        public void Should_Handle_Names_With_Double_Quote()
-        {
-            var expected = "Hello, Andrea, Franco and Alfredo.";
-            var actual = _sut.Greet("Andrea", "\"Franco, Alfredo\"");
-
-            Assert.AreEqual(expected, actual);
-        }
-
+        
         [Test]
         [Ignore("SandBox test")]
         public void SandBox()

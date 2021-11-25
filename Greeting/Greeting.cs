@@ -14,7 +14,7 @@ namespace Greeting
 
         public string Greet(string[] names)
         {
-            names = names.Split(',');
+            names = names.NormalizeNames();
             return _greetingHandler.Handle(names);
         }
     }

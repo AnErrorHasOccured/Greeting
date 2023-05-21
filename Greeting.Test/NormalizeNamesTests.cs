@@ -1,50 +1,49 @@
 using Greeting.Utility;
 using NUnit.Framework;
 
-namespace Greeting.Test
+namespace Greeting.Test;
+
+public class NormalizeNamesTests
 {
-    public class NormalizeNamesTests
+    [Test]
+    public void Should_Handle_Names_With_Double_Quote()
     {
-        [Test]
-        public void Should_Handle_Names_With_Double_Quote()
+        var input = new[]
         {
-            var input = new[]
-            {
-                "Andrea",
-                "\"Franco, Alfredo\""
-            };
+            "Andrea",
+            "\"Franco, Alfredo\""
+        };
 
-            var expected = new[]
-            {
-                "Andrea",
-                "Franco, Alfredo"
-            };
+        var expected = new[]
+        {
+            "Andrea",
+            "Franco, Alfredo"
+        };
 
-            var actual = input.NormalizeNames();
+        var actual = input.NormalizeNames();
             
-            Assert.AreEqual(expected, actual);
-        }
+        Assert.AreEqual(expected, actual);
+    }
 
 
-        [Test]
-        public void Should_Handle_Element_With_Sign()
+    [Test]
+    public void Should_Handle_Element_With_Sign()
+    {
+        var input = new[]
         {
-            var input = new[]
-            {
-                "Andrea",
-                "Franco, Alfredo"
-            };
+            "Andrea",
+            "Franco, Alfredo"
+        };
 
-            var expected = new[]
-            {
-                "Andrea",
-                "Franco",
-                "Alfredo"
-            };
+        var expected = new[]
+        {
+            "Andrea",
+            "Franco",
+            "Alfredo"
+        };
 
-            var actual = input.NormalizeNames();
+        var actual = input.NormalizeNames();
 
-            Assert.AreEqual(expected, actual);
-        }
+        Assert.AreEqual(expected, actual);
     }
 }

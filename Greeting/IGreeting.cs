@@ -1,7 +1,6 @@
-﻿namespace Greeting
+﻿namespace Greeting;
+
+public interface IGreeting
 {
-    public interface IGreeting
-    {
-        string Greet(params string[]  name);
-    }
+    string Greet(params string[]  name);
 }

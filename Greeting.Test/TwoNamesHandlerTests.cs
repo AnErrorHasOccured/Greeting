@@ -1,25 +1,24 @@
 ﻿using Greeting.Chain;
 using NUnit.Framework;
 
-namespace Greeting.Test
+namespace Greeting.Test;
+
+public class TwoNamesHandlerTests
 {
-    public class TwoNamesHandlerTests
+    private IGreetingHandler _sut;
+
+    [SetUp]
+    public void Setup()
     {
-        private IGreetingHandler _sut;
+        _sut = new TwoNamesHandler();
+    }
 
-        [SetUp]
-        public void Setup()
-        {
-            _sut = new TwoNamesHandler();
-        }
+    [Test]
+    public void Should_Handle_Two_Name()
+    {
+        var expected = "Hello, Andrea and Franco.";
+        var actual = _sut.Handle("Andrea", "Franco");
 
-        [Test]
-        public void Should_Handle_Two_Name()
-        {
-            var expected = "Hello, Andrea and Franco.";
-            var actual = _sut.Handle("Andrea", "Franco");
-
-            Assert.AreEqual(expected, actual);
-        }
+        Assert.AreEqual(expected, actual);
     }
 }

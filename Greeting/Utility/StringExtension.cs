@@ -1,9 +1,8 @@
 ﻿using System.Linq;
 
-namespace Greeting.Utility
+namespace Greeting.Utility;
+
+public static class StringExtension
 {
-    public static class StringExtension
-    {
-        public static bool IsUpper(this string s) => s.All(char.IsUpper);
-    }
+    public static bool IsUpper(this string s) => s.All(char.IsUpper);
 }

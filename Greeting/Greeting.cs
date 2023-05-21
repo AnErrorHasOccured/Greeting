@@ -1,21 +1,20 @@
 ﻿using Greeting.Chain;
 using Greeting.Utility;
 
-namespace Greeting
+namespace Greeting;
+
+public class Greeting : IGreeting
 {
-    public class Greeting : IGreeting
+    private readonly IGreetingHandler _greetingHandler;
+
+    public Greeting(IGreetingHandler greetingHandler)
     {
-        private readonly IGreetingHandler _greetingHandler;
+        _greetingHandler = greetingHandler;
+    }
 
-        public Greeting(IGreetingHandler greetingHandler)
-        {
-            _greetingHandler = greetingHandler;
-        }
-
-        public string Greet(string[] names)
-        {
-            names = names.NormalizeNames();
-            return _greetingHandler.Handle(names);
-        }
+    public string Greet(string[] names)
+    {
+        names = names.NormalizeNames();
+        return _greetingHandler.Handle(names);
     }
 }

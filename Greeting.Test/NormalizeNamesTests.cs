@@ -1,49 +1,30 @@
 using Greeting.Utility;
-using NUnit.Framework;
+using Xunit;
 
 namespace Greeting.Test;
 
 public class NormalizeNamesTests
 {
-    [Test]
+    [Fact]
     public void Should_Handle_Names_With_Double_Quote()
     {
-        var input = new[]
-        {
-            "Andrea",
-            "\"Franco, Alfredo\""
-        };
-
-        var expected = new[]
-        {
-            "Andrea",
-            "Franco, Alfredo"
-        };
+        var input = new[] { "Andrea", "\"Franco, Alfredo\"" };
+        var expected = new[] { "Andrea", "Franco, Alfredo" };
 
         var actual = input.NormalizeNames();
             
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
 
-    [Test]
+    [Fact]
     public void Should_Handle_Element_With_Sign()
     {
-        var input = new[]
-        {
-            "Andrea",
-            "Franco, Alfredo"
-        };
-
-        var expected = new[]
-        {
-            "Andrea",
-            "Franco",
-            "Alfredo"
-        };
+        var input = new[] { "Andrea", "Franco, Alfredo" };
+        var expected = new[] { "Andrea", "Franco", "Alfredo" };
 
         var actual = input.NormalizeNames();
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 }

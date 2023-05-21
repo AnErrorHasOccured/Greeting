@@ -1,80 +1,80 @@
 using Greeting.Chain;
 using Greeting.Ioc;
-using NUnit.Framework;
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Greeting.Test;
 
 public class GreetingTests
 {
-    private IGreeting _sut;
+    private readonly IGreeting _sut;
+    private readonly ITestOutputHelper _output;
 
-    [SetUp]
-    public void Setup()
+    public GreetingTests(ITestOutputHelper output)
     {
         var greetingHandler = Container.GetService<IGreetingHandler>();
+        _output = output;
         _sut = new Greeting(greetingHandler);
     }
 
-    [Test]
+    [Fact]
     public void Should_Add_Greeting_To_Name()
     {
         var expected = "Hello, Andrea.";
         var actual = _sut.Greet("Andrea");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Null_Name()
     {
         var expected = "Hello, my friend.";
         var actual = _sut.Greet(null);
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Uppercase_Name()
     {
         var expected = "HELLO, ANDREA!";
         var actual = _sut.Greet("ANDREA");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Two_Name()
     {
         var expected = "Hello, Andrea and Franco.";
         var actual = _sut.Greet("Andrea", "Franco");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Multiple_Name()
     {
         var expected = "Hello, Andrea, Franco and Giuseppe.";
         var actual = _sut.Greet("Andrea", "Franco", "Giuseppe");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Multiple_Name_With_Upper()
     {
         var expected = "Hello, Andrea and Franco. AND HELLO GIUSEPPE!";
         var actual = _sut.Greet("Andrea", "Franco", "GIUSEPPE");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
         
-    [Test]
-    [Ignore("SandBox test")]
+    [Fact(Skip = "Sandbox Fact")]
     public void SandBox()
     {
         var actual = _sut.Greet("Andrea", "Franco", "GIUSEPPE", "Paperino", "\"h, Z\"");
-
-        Assert.Pass(actual);
+        _output.WriteLine(actual);
     }
 }

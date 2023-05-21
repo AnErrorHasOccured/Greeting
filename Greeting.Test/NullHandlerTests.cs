@@ -1,24 +1,23 @@
 ﻿using Greeting.Chain;
-using NUnit.Framework;
+using Xunit;
 
 namespace Greeting.Test;
 
 public class NullHandlerTests
 {
     private IGreetingHandler _sut;
-
-    [SetUp]
-    public void Setup()
+    
+    public NullHandlerTests()
     {
         _sut = new NullHandler();
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Null_Name()
     {
         var expected = "Hello, my friend.";
         var actual = _sut.Handle(null);
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 }

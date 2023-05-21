@@ -1,33 +1,32 @@
 ﻿using Greeting.Chain;
-using NUnit.Framework;
+using Xunit;
 
 namespace Greeting.Test;
 
 public class OneNameHandlerTests
 {
     private IGreetingHandler _sut;
-
-    [SetUp]
-    public void Setup()
+    
+    public OneNameHandlerTests()
     {
         _sut = new OneNameHandler();
     }
 
-    [Test]
+    [Fact]
     public void Should_Add_Greeting_To_Name()
     {
         var expected = "Hello, Andrea.";
         var actual = _sut.Handle("Andrea");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Uppercase_Name()
     {
         var expected = "HELLO, ANDREA!";
         var actual = _sut.Handle("ANDREA");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 }

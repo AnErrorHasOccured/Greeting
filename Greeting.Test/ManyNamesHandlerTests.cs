@@ -1,24 +1,23 @@
 ﻿using Greeting.Chain;
-using NUnit.Framework;
+using Xunit;
 
 namespace Greeting.Test;
 
 public class ManyNamesHandlerTests
 {
     private IGreetingHandler _sut;
-
-    [SetUp]
-    public void Setup()
+    
+    public ManyNamesHandlerTests()
     {
         _sut = new ManyNamesHandler();
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Multiple_Name()
     {
         var expected = "Hello, Andrea, Franco and Giuseppe.";
         var actual = _sut.Handle("Andrea", "Franco", "Giuseppe");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 }

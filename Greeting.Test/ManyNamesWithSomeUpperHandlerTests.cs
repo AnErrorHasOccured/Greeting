@@ -1,24 +1,23 @@
 ﻿using Greeting.Chain;
-using NUnit.Framework;
+using Xunit;
 
 namespace Greeting.Test;
 
 public class ManyNamesWithSomeUpperHandlerTests
 {
-    private IGreetingHandler _sut;
-
-    [SetUp]
-    public void Setup()
+    private readonly IGreetingHandler _sut;
+    
+    public ManyNamesWithSomeUpperHandlerTests()
     {
         _sut = new ManyNamesWithSomeUpperHandler();
     }
 
-    [Test]
+    [Fact]
     public void Should_Handle_Multiple_Name_With_Upper()
     {
         var expected = "Hello, Andrea and Franco. AND HELLO GIUSEPPE!";
         var actual = _sut.Handle("Andrea", "Franco", "GIUSEPPE");
 
-        Assert.AreEqual(expected, actual);
+        Assert.Equal(expected, actual);
     }
 }

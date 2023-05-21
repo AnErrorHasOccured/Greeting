@@ -1,8 +1,7 @@
 # The Greeting Kata
 
-This Kata is a c# resolution of [Kata](https://github.com/testdouble/contributing-tests/wiki/Greeting-Kata) 
-
-Its use chain of responsability to handle input names.
+This Kata is a c# resolution of [Greeting-Kata](https://github.com/testdouble/contributing-tests/wiki/Greeting-Kata). 
+It uses chain of responsability to handle input names.
 
 ## Requirement 1
 

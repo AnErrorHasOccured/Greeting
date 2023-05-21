@@ -8,19 +8,19 @@ public static class ArrayStringExtensions
     {
         if (names?.Any(_ => _.Contains("\"")) ?? false)
         {
-            var escape2 = names?.Where(x => x.Contains("\"")).ToArray();
-            var escapeClear = escape2?.Select(x => x.Replace("\"", string.Empty)).ToArray();
+            var escape = names?.Where(x => x.Contains("\"")).ToArray();
+            var escapeClear = escape?.Select(x => x.Replace("\"", string.Empty)).ToArray();
 
-            return names.Except(escape2).Concat(escapeClear).ToArray();
+            return names.Except(escape).Concat(escapeClear).ToArray();
         }
 
         if (names?.Any(_ => _.Contains(",")) ?? false)
         {
-            var comma2 = names?.Where(x => x.Contains(",")).ToArray();
-            var split = comma2.SelectMany(x => x.Split(","));
+            var comma = names?.Where(x => x.Contains(",")).ToArray();
+            var split = comma.SelectMany(x => x.Split(","));
             var splitClear = split.Select(_ => _.Replace(" ", string.Empty));
 
-            return names.Except(comma2).Concat(splitClear).ToArray();
+            return names.Except(comma).Concat(splitClear).ToArray();
         }
 
         return names;

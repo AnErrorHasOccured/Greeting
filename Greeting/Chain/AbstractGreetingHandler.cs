@@ -9,26 +9,18 @@ public abstract class AbstractGreetingHandler : IGreetingHandler
     public IGreetingHandler SetNext(IGreetingHandler greetingHandler)
     {
         _nextGreetingHandler = greetingHandler;
-
         return greetingHandler;
     }
 
-    public virtual string Handle(params string[] names)
-    {
-        return _nextGreetingHandler?.Handle(names);
-    }
+    public virtual string Handle(params string[] names) => _nextGreetingHandler?.Handle(names);
 
-    protected string Greet(string name)
+    protected string Greet(string? name)
     {
-        var basePrashe = "{0}, {1}";
         var greet = "Hello";
 
         if (name is null)
-            return string.Format(basePrashe, greet, "my friend");
+            return $"{greet}, my friend";
 
-        if (name.IsUpper())
-            return string.Format(basePrashe, greet.ToUpper(), name);
-
-        return string.Format(basePrashe, greet, name);
+        return name.IsUpper() ? $"{greet.ToUpper()}, {name}" : $"{greet}, {name}";
     }
 }
